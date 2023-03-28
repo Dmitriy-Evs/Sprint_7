@@ -7,6 +7,7 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.path.json.JsonPath;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.example.BaseUrl;
 import org.example.Courier;
 import org.junit.After;
 import org.junit.Before;
@@ -20,11 +21,11 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class LoginCourierTest {
-    static private String login = RandomStringUtils.randomAlphabetic(10);
-    static private String passwordTest = "11112222";
+    static private String login = RandomStringUtils.randomAlphabetic(8);
+    static private String passwordTest = RandomStringUtils.randomAlphabetic(4);;
 
-    static private String wrongPasswordTest = "3333";
-    static private String firstName = "Vasili";
+    static private String wrongPasswordTest = passwordTest + "oops";
+    static private String firstName = RandomStringUtils.randomAlphabetic(6);;
     static private String endPointCreate = "/api/v1/courier";
     static private String endPointLogin = "/api/v1/courier/login";
     static private String endPointDelete = "/api/v1/courier/";
@@ -39,7 +40,7 @@ public class LoginCourierTest {
     // Создаем курьера для тестов
     @Before
     public void setUp() {
-        RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";
+        RestAssured.baseURI = BaseUrl.baseUrl;;
         Courier courierCreate  = new Courier(login, passwordTest, firstName);
         given()
                 .header("Content-type", "application/json")

@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 
 
 public class StepOrder {
-    protected final String BASE_URI = "http://qa-scooter.praktikum-services.ru";
+    protected final String BASE_URI = BaseUrl.baseUrl;;
     protected final String POST_CREATE_ORDER = "/api/v1/orders";
     protected final String GET_ORDER = "/api/v1/orders";
     protected final String PUT_ORDER_CANCEL = "/api/v1/orders/cancel";
